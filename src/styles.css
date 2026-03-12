@@ -1,32 +1,95 @@
-<<<<<<< HEAD
+
 /* Global Styles */
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: linear-gradient(180deg, #0f0f23 0%, #1a1a2e 30%, #16213e 70%, #0f0f23 100%);
   min-height: 100vh;
-  color: #eee;
+  color: #e2e8f0;
+  background-attachment: fixed;
 }
 
-h1, h2, h3 {
-  font-weight: 600;
+/* Subtle pattern overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(233, 69, 96, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(167, 139, 250, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
   margin: 0;
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.6;
 }
 
 button {
   font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  transition: all 0.3s ease;
 }
 
 /* Container for main content */
 main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px 20px;
 }
-=======
-/* You can add global styles to this file, and also import other style files */
->>>>>>> 4214f377706eea95b5484c5254e5ad8aeed07925
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #e94560 0%, #c23a51 100%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff6b6b 0%, #e94560 100%);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(233, 69, 96, 0.3);
+  color: #fff;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+  
+  main {
+    padding: 20px 15px;
+  }
+}
+

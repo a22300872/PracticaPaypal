@@ -1,0 +1,37 @@
+<nav class="navbar">
+  <div class="nav-brand">
+    <a routerLink="/" class="brand-link">🎸 Guitarras</a>
+  </div>
+
+  <div class="nav-search">
+    <input
+      type="text"
+      [ngModel]="searchTerm()"
+      (input)="onSearchInput($event)"
+      (focus)="onSearchFocus()"
+      (blur)="onSearchBlur()"
+      placeholder="Buscar productos..."
+      class="search-input"
+    />
+    @if (showResults() && filteredProducts().length > 0) {
+      <div class="search-results">
+        @for (product of filteredProducts(); track product.id) {
+          <div class="search-result" (click)="selectProduct(product)">
+            <span class="result-name">{{ product.name }}</span>
+            <span class="result-price">${{ product.price }}</span>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Catálogo</a>
+    <a routerLink="/carrito" routerLinkActive="active" class="cart-link">
+      🛒 Carrito
+      @if (cartCount() > 0) {
+        <span class="cart-badge">{{ cartCount() }}</span>
+      }
+    </a>
+  </div>
+</nav>

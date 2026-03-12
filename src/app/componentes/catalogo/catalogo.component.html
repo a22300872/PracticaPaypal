@@ -8,12 +8,13 @@
     <p>Cargando productos...</p>
   } @else {
     <section class="grid">
-      @for (p of products(); track p.id) {
+      @for (p of filteredProducts(); track p.id) {
         <app-product-card [product]="p" (add)="agregar($event)"></app-product-card>
       }
     </section>
+    
+    @if (filteredProducts().length === 0) {
+      <p class="no-results">No se encontraron productos que coincidan con tu búsqueda.</p>
+    }
   }
-
-  <hr class="sep" />
-  <app-carrito></app-carrito>
 </main>
