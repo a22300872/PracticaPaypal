@@ -9,9 +9,22 @@
       <ul class="list">
         @for (producto of carrito(); track producto.id) {
           <li class="item">
-            <span class="line">
-              {{ producto.name }} - {{ producto.price | currency:'MXN' }}
-            </span>
+            <div class="product-info">
+              <span class="name">{{ producto.name }}</span>
+              <span class="price">{{ producto.price | currency:'MXN' }}</span>
+            </div>
+
+            <div class="quantity-controls">
+              <button class="btn-qty" (click)="disminuirCantidad(producto.id)" [disabled]="producto.quantity <= 1">
+                −
+              </button>
+              <span class="quantity">{{ producto.quantity }}</span>
+              <button class="btn-qty" (click)="aumentarCantidad(producto.id)">
+                +
+              </button>
+            </div>
+
+            <span class="subtotal">{{ producto.price * producto.quantity | currency:'MXN' }}</span>
 
             <button class="btn danger" (click)="quitar(producto.id)">
               Eliminar
@@ -21,7 +34,8 @@
       </ul>
 
       <div class="total">
-        Total: {{ total() | currency:'MXN' }}
+        <span>Total ({{ cantidadTotal() }} productos):</span>
+        <span class="amount">{{ total() | currency:'MXN' }}</span>
       </div>
 
       <div class="actions">

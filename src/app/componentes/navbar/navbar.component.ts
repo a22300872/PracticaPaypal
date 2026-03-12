@@ -18,7 +18,7 @@ export class NavbarComponent {
   products = signal<Product[]>([]);
   showResults = signal(false);
 
-  cartCount = computed(() => this.carritoService.productos().length);
+  cartCount = computed(() => this.carritoService.cantidadTotal());
 
   constructor(
     private carritoService: CarritoService,
