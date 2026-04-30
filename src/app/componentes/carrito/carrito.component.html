@@ -1,5 +1,6 @@
 <div class="cart-page">
   <a routerLink="/" class="back-link">← Volver al Catálogo</a>
+  
   <section class="cart">
     <h2 class="title">Carrito de Compras</h2>
 
@@ -26,7 +27,7 @@
 
             <span class="subtotal">{{ producto.price * producto.quantity | currency:'MXN' }}</span>
 
-            <button class="btn danger" (click)="quitar(producto.id)">
+            <button class="btn-remove" (click)="quitar(producto.id)">
               Eliminar
             </button>
           </li>
@@ -41,7 +42,39 @@
       <div class="actions">
         <button class="btn danger" (click)="vaciar()">Vaciar Carrito</button>
         <button class="btn purple" (click)="exportarXML()">Exportar XML</button>
-        <div id="paypal-button-container"></div>
+      </div>
+
+      <div class="checkout-section">
+        <div class="checkout-header">
+          <h3>Finalizar Compra</h3>
+          <div class="secure-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            Pago Seguro
+          </div>
+        </div>
+        
+        <div class="paypal-wrapper">
+          <div id="paypal-button-container"></div>
+          <p class="paypal-hint">La forma rápida y segura de pagar</p>
+        </div>
+        
+        <div class="checkout-features">
+          <div class="feature">
+            <span class="feature-icon">🛡️</span>
+            <span>Compra protegida</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">⚡</span>
+            <span>Pago instantáneo</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">🔄</span>
+            <span>Garantía de devolución</span>
+          </div>
+        </div>
       </div>
     }
   </section>

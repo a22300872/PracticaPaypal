@@ -44,6 +44,7 @@ export class CarritoComponent {
 
     if (!paypal) {
       console.error('PayPal SDK no cargado');
+      container.innerHTML = '<div style="padding: 20px; background: rgba(220,38,38,0.1); border: 1px solid rgba(220,38,38,0.3); border-radius: 12px; color: #fca5a5; text-align: center;">Error: No se pudo cargar PayPal. Verifica tu conexión e intenta recargar la página.</div>';
       return;
     }
 
@@ -58,16 +59,22 @@ export class CarritoComponent {
 
     paypal.Buttons({
       style: {
-        layout: 'horizontal',
-        color:  'gold',
-        shape:  'rect',
-        label:  'paypal',
-        height: 45
+        layout: 'vertical',
+        color:  'blue',
+        shape:  'pill',
+        label:  'pay',
+        height: 55,
+        tagline: false
       },
       createOrder: () => {
-        return this.paypalService.createOrder({ items: itemsPayload, total: totalAmount })
-          .pipe(map((res: any) => res.id))
-          .toPromise();
+        return new Promise((resolve, reject) => {
+          this.paypalService.createOrder({ items: itemsPayload, total: totalAmount })
+            .pipe(map((res: any) => res.id))
+            .subscribe({
+              next: (id) => resolve(id),
+              error: (err) => reject(err)
+            });
+        });
       },
       onApprove: (data: any) => {
         this.paypalService.captureOrder(data.orderID).subscribe({
