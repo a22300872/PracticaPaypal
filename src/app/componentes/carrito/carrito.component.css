@@ -336,6 +336,47 @@
   box-shadow: 0 15px 40px rgba(124, 58, 237, 0.5);
 }
 
+  .btn.paypal {
+    background: linear-gradient(135deg, #0070ba 0%, #003087 50%, #0070ba 100%);
+    background-size: 200% 200%;
+    color: #fff;
+    box-shadow: 0 8px 25px rgba(0, 112, 186, 0.4),
+               0 0 0 1px rgba(0, 112, 186, 0.2);
+  }
+
+  .btn.paypal:hover {
+    background-position: 100% 100%;
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0, 112, 186, 0.5);
+  }
+
+  /* PayPal button container */
+  #paypal-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    min-height: 45px;
+  }
+
+  #paypal-button-container > div {
+    border-radius: 12px !important;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 112, 186, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  #paypal-button-container > div:hover {
+    box-shadow: 0 12px 35px rgba(0, 112, 186, 0.5);
+    transform: translateY(-2px);
+  }
+}
+
+.btn.paypal:hover {
+  background-position: 100% 100%;
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 112, 186, 0.5);
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .cart-page {
